@@ -3,7 +3,7 @@
 @section('content')
         <div class="container">
             <div class="content">
-                   <h1>Laravel</h1>
+                   <h1>Luckydonation</h1>
 
             </div>
         </div>

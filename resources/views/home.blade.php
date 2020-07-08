@@ -6,14 +6,17 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                @if(Auth::user()->role_id == 1)
+                    <div class="row card-body">
+                        <div class="col-md-6">
+                            Utilisateur : {{ $users }}
                         </div>
-                    @endif
-
+                        <div class="col-md-6">
+                            Donneurs : {{ $donors }}
+                        </div>
+                    </div>
+                @endif
+                <div class="card-body">
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Luckydonation') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Luckydonation') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -55,12 +55,31 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('mail') }}">
-                                        {{ __('Messagerie') }}
+                                    <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id)}}">
+                                        {{ __('Profil') }}
                                     </a>
                                     <a class="dropdown-item" href="{{ route('home') }}">
-                                        {{ __('Dashboard') }}
+                                        {{ __('Home') }}
                                     </a>
+                                    @if( Auth::user()->role_id == 1)
+                                    <a class="dropdown-item" href="{{ route('messages.index') }}">
+                                        {{ __('Messagerie') }}
+                                    </a>
+                                    @else
+                                        <a class="dropdown-item" href="{{ route('messages.show', 1) }}">
+                                            {{ __('Messagerie') }}
+                                        </a>
+                                    @endif
+
+
+                                    @if( Auth::user()->role_id == 1)
+                                        <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                                            {{ __('Utilisateurs') }}
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('admin.donors.index') }}">
+                                            {{ __('Donneurs') }}
+                                        </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

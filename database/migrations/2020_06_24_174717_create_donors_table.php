@@ -15,6 +15,9 @@ class CreateDonorsTable extends Migration
     {
         Schema::create('donors', function (Blueprint $table) {
             $table->id();
+            $table->string("eyes_color");
+            $table->string("blood_type");
+            $table->string("category");
             $table->timestamps();
         });
     }

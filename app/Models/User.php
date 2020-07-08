@@ -19,7 +19,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $password
  * @property string $remember_token
  * @property Carbon $created_at
- * @property Carbon $updated_at
  *
  * @package App\Models
  */
@@ -41,6 +40,7 @@ class User extends Model
 		'email',
 		'email_verified_at',
 		'password',
-		'remember_token'
+		'remember_token',
+        'role_id'
 	];
 }
